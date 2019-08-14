@@ -29,9 +29,9 @@ function countdownScript(number) {
 ## Рекурсивные алгоритмы
  
 ```javascript
-function countdownScript(number)
- 	if(number < 1){ 
- 		 return "Blast off!"; 
+function countdownScript(number) {
+  if(number < 1) { 
+    return "Blast off!"; 
   }
  
   return `${number} ... \n` + countdownScript(number - 1)
