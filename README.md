@@ -1,10 +1,10 @@
-## Упражнения на алгоритмы: Расчет факториала
+## Algorithms: Calculation of the factorial
 
-В этой задаче тебе необходимо написать два решения одной и той же проблемы. Тебе надо написать две функции, которые ведут себя одинаково - они будут принимать те же аргументы и возвращать одинаковые значения. Они будут отличаться только в своих реализациях (т.е. каким образом они делают то, что делают).
+You have to write two solutions to the same problem. You need to write two functions that do the same thing - they accept the same arguments and return the same values. The only thing that will be different between them is their implementation (i.e. HOW they work the way they work).
 
-Проблема, которую ты будешь решать - это вычисление факториала заданного числа. Ты решишь эту задачу, написав *итеративное* и *рекурсивное* решение.
+The problem you will be solving is the calculation of the factorial of a given integer. You will solve the problem by using both the *iterative* and *recursive* algorithms.
 
-## Итерационные алгоритмы
+## Iterative algorithms
  
 ```javascript
 function countdownScript(number) {
@@ -19,14 +19,13 @@ function countdownScript(number) {
   return script;
 }
 ```
-*Рисунок 1*. Итеративный алгоритм обратного отсчета.
+*Figure 1*. Iterative algorithm of the countdown timer.
 
-Ты уже знаком(а) с написанием [итеративных алгоритмов](https://en.wikipedia.org/wiki/Iteration#Computing). Каковы признаки того, что мы пишем итеративный алгоритм? Наши методы включают в себя цикл - возможно с `while` или `for`. Мы выполняем какие-то действия определенное количество раз. Например, мы перебираем элементы в массиве.
+You are already familiar with working with [iterative algorithms](https://en.wikipedia.org/wiki/Iteration#Computing). What are the signs that we are using the iterative algorithm? Our methods include loops - either a `while` or `for` loop. We do something a certain number of times. For example, iterating over elements in an array.
 
-На Рисунке 1 ты видишь итеративное решение для создания сценария обратного отсчета. Метод строит и возвращает строку. Он делает это, используя цикл while: до тех пор, пока переменная `number` указывает на целое число больше нуля, метод будет продолжать добавлять числа к `script`. Важным фактором в таком методе является понимание того, когда нужно прервать цикл.
-Как это выполняется в функции на Рисунке 1?
+On Figure 1 you see the iterative solution to the creation of a countdown timer. This method builds and returns a string. It does so by using a while loop: as long as the variable `number` points to a whole number that is bigger than 0, the method will keep adding integers to `script`. The most important thing to understand here is how to stop the loop. How do we stop the loop on Figure 1?
 
-## Рекурсивные алгоритмы
+## Recursive algorithms
  
 ```javascript
 function countdownScript(number) {
@@ -37,21 +36,21 @@ function countdownScript(number) {
   return `${number} ... \n` + countdownScript(number - 1)
 }
 ```
-*Рисунок 2*. Рекурсивный алгоритм обратного отсчета.
+*Рисунок 2*. Recursive algorithm of the countdown timer.
 
-Написание [рекурсивной функции](http://en.wikipedia.org/wiki/Recursion_%28computer_science%29) - это еще один подход к решению той же задачи, которую мы решаем с помощью итеративных алгоритмов. На Рисунке 2 мы решаем задачу создания сценария обратного отсчета при помощи рекурсии.
+Using [recursive function](http://en.wikipedia.org/wiki/Recursion_%28computer_science%29) is one more way to solve the same problem. On Figure 2 we solve the problem with the creation of the countdown timer with the help of recursion.
 
-Одной из важных особенностей написания рекурсивного метода является *базовый случай*. Это известное решение проблемы. При работе со строкой `script` мы знаем, что когда мы опускаемся ниже единицы - получаем «Blast off». Другими словами, у нас есть наш базовый случай; если число, переданное нашему методу, меньше единицы, мы просто вернем строку `Blast off!`.
+One of the most important characteristics of the recursive method is the *base case*. It's a popular solution to the problem. We know that once the variable number is less than 1, we get "Blast off".  In other words, we have the base case; if the number, passed down as the argument, is less than 1, we just return the string `Blast off!`.
 
-Вопрос «Каковы базовые случаи?»  мы должны в первую очередь задавать каждый раз, когда мы хотим рекурсивно подходить к проблеме. Многие рекурсивные алгоритмы имеют только один базовый случай, но также могут иметь и несколько базовых случаев.
+Question "What is the base case?" is the question that we need to ask ourselves every time when we want to solve the problem recursively. Lots of recursive algorithms have only one base case but they also might have several base cases.
 
-В нашем базовом случае мы знаем, как поступить, если число, попавшее в наш метод, равно нулю или отрицательному числу. Но в противном случае нам нужно продолжать дополнять нашу строку `script`. Мы делаем это небольшими шагами. Мы не знаем точно, как будет выглядеть весь `script`, но мы знаем, какой из них выглядит так: `${number} ... \ n`.
+In our base case we know what to do if an integer equals 0 or if it's negative. Otherwise, we need to keep adding to the`script`. We do it using small steps. We don't know for sure how the whole `script` but we know which one will look like this: `${number} ... \ n`.
 
-Нам просто нужно объединить этот фрагмент с остальной частью сценария обратного отсчета. И, чтобы сгенерировать остальную часть скрипта, мы должны снова обратиться к  нашему методу `countdownScript` - на этот раз получается на одно число меньше, чем у нас ранее. Это наиболее очевидная особенность рекурсивного метода: метод вызывает сам себя.
+We just need to combine this section with the rest of the creation of the countdown timer. In order to generate the rest of the script, we have to use our `countdownScript` method again - this time the number we get is less than before. It is one of the most obvious characteristics of the recursive method: it calls itself.
 
-Метод будет продолжать вызывать себя и разрабатывать небольшие фрагменты сценария(script) до тех пор, пока мы не вызовем наш метод и не получим базовый случай. В этот момент у нас на руках будут все части нашего сценария, и мы сможем их объединить.
+The method will keep calling itself until we get our base case. By that time we will have all the pieces of the script and we can combine them.
 
-## Расчет факториала
+## Calculation of the factorial
  
 ```
 0! = 1
@@ -61,13 +60,13 @@ function countdownScript(number) {
 4! = 1 * 2 * 3 * 4
 ```
 
-*Рисунок 3*. Пример факториальных расчетов
+*Figure 3*. Example of the factorial calculations
 
-Что такое [факториал](http://en.wikipedia.org/wiki/Factorial)? Для данного числа факториал является произведением всех положительных целых чисел, меньших или равных самому числу. Например, 2! (2 факториал) равен `1*2;` `3!=1*2*3;` `4!=1*2*3*4`. (см. Рисунок 3). Мы будем обозначать факториал числа как `n!`.
+What is the [factorial](http://en.wikipedia.org/wiki/Factorial)? For the given number, factorial is the multiplication of all the positive integers, less or equal to the number itself. For instance, 2! (or the factorial of 2)) equals `1*2;` `3!=1*2*3;` `4!=1*2*3*4`. (see. Figure 3). We will define factorial as `n!`.
 
-Хотя это может показаться очень теоретической информацией, но вычисление факториала имеет применение в реальном мире. Например, вычисление факториала подскажет нам, сколькими разными способами можно организовать набор элементов. Например, если у тебя есть десять книг на книжной полке, то есть несколько разных способов переставить книги. Если у тебя есть набор элементов `n`, тогда есть` n! ` способов их упорядочения.
+Though it might seem that this is too theoretical, calculating factorial has real world applications. For example, calculating factorial will tell us in how many ways we can organize a set of elements. For instance, you have ten books on a bookshelf, i.e. several different ways to organize them. If you have a set of elements `n`, then there is ` n! ` number of ways to organize them.
 
-Возвращаясь к Рисунку 3, ты можешь заметить, что расчет для (3!) разделяется на рассчет `3*2!`  Аналогично с 3! И 4! – каждый  из них включает в себя множители 3, 2, 1. 
+Let's go back to Figure 3, and you will notice that the factorial of 3, i.e 3! will be calculated as `3*2!`  Same with 3! and 4! - every number includes multipliers 3, 2 and 1.
 
 ```
 0! = 1
@@ -77,33 +76,32 @@ function countdownScript(number) {
 4! = 4 * 3!
 ```
 
-*Рисунок 4*. Вычисление чисел факториалом в терминах другого факториала.
+*Figure 4*. Calculating numbers using factorial in terms of another factorial.
 
-Из-за этого мы могли бы сказать, например, что четыре факториал (4!)  равно четыре умножить на три факториал  (`4!=3!*4`).  Или, в более общем плане, факториал любого числа равен этому числу умножить на факториал предыдущего числа. (см. Рисунок 4)
+Because of that, we might say, for example, that the factorial of 4 (4!) equals 4 multiplied by the factorial of 3 (`4!=3!*4`). Or, more generally, the factorial of any number equals this number multiplied by the factorial of the previous number (see Figure 4).
 
-*Примечание:* По соглашению, нулевой факториал равен единице.
-
-
-### Release 0. Итерационный подсчет факториала
-
-Ты начнешь с написания метода, который вычисляет факториал для заданного числа с использованием итеративной реализации. Метод должен принимать любое неотрицательное целое число в качестве входных данных и вычислять факториал этого числа.
-
-### Release 1. Рекурсивный расчет факториала
-
-Теперь напиши метод расчета факториала при помощи рекурсии. Попробуй написать тесты самостоятельно, хотя бы на проверку чего-то одного. Используй jest.
+*Note:* By convention, the factorial of 0 equals 1.
 
 
-### Release 2. Уровень вложенности
+### Release 0. Iterative calculation of the factorial
 
-Что если ты вызовешь рекурсивный метод для вычисления факториала 5 000? Чтобы выполнить фактический расчет, этот метод будет снова вызван для числа 4 999, 4 998 и так далее вплоть до 1. В зависимости от реализации, твой метод будет вызываться примерно 5 000 раз.
+You will start with writing a function that will calculate the factorial of a given number using the iterative method. The method must accept any non-negative whole number and calculate the factorial of that number.
 
-Каждый из этих вызовов метода работает в собственной маленькой части памяти компьютера. И каждый вызов занимает эту память до тех пор, пока метод не начнет новый цикл. Когда мы вызываем `factorialRecursive(5000)`, наш метод не начинает цикл заново до тех пор, пока он предварительно не рассчитает `factorialRecursive(4999)`, который не может быть рассчитан до осуществления вычисления `factorialRecursive(4998)` и т.д. Постепенно мы используем все больше и больше памяти.
+### Release 1. Recursive calculation of the factorial
 
-Каждый из этих примерно 5 000 вызовов методов занимает небольшую часть памяти, пока мы не дойдем до базового случая и не начнем возвращать значения. `factorialRecrusive(1)` запускает цикл заново, что позволяет возвращать `factorialRecursive(2)`, что в свою очередь позволяет возвращать `factorialRecursive(3)` и т.д. до тех пор, пока все вызовы метода не будут оценены, и память, которую они занимают, не будет освобождена.
+Now you need to write a function that will calculate the factorial of a given number using recursion. Try writing tests by yourself, at least for testing either one of the methods. Use jest.
 
-Попробуй разные числа в качестве аргумента, чтобы определить наибольшее значение, которое наш рекурсивный метод может принимать в качестве своего ввода. Какую ошибку ты получаешь? Что означает эта ошибка?
+### Release 2. Nesting 
+
+What if you use recursion to calculate the factorial of 5 000? In order to calculate it, the method will be called again for number 4 999, 4 998 and so on till 1. Depending on the implementation, your method will call itself approximately 5 000 times.
+
+Each of these method calls works in its own tiny part of the computer memory. And every call takes up this memory till the method starts a new cycle. When we call `factorialRecursive(5000)`, our method will not be starting a new cycle until it preliminarily calculates `factorialRecursive(4999)`, that cannot be calculated till the calculation of `factorialRecursive(4998)` and so on. Gradually we will use up more and more memory space.
+
+Each of these 5 000 method calls takes up a small part of the memory space until we get to the base case and start returning values. `factorialRecrusive(1)` will start the cycle again which returns `factorialRecursive(2)`, which in its turn returns  `factorialRecursive(3)` and so on till all the method calls will return values and the memory space will be freed.
+
+Try out different numbers as arguments to determine the highest value that our recursive method might take in as an argument. Which error do you get? What does it mean?
 
 
-## Выводы
+## Conclusion
 
-Итерация и рекурсия - это разные типы реализаций. Каждый из них может в целом обеспечивать такое же поведение, как и другой. Какой выбрать? Со временем, когда ты практикуешь написание кода и становишься более продвинутыми в этом и, соответственно, более уверенно реализуешь методы, то выбор итерации или рекурсии станет для тебя также более естественным процессом. Чуть позже мы рассмотрим некоторые проблемы итеративных и рекурсивных методов.
+Iteration and recursion are different types of implementation. Each one of them does exactly the same thing as the other. Which one to choose? Later on, when you've practiced writing more code and you've become more confident in using different methods, the choice will seem more natural to you. Later we will dive into some problems that we might face when using iterative and recursive methods.
