@@ -15,8 +15,6 @@ function factorialRecrusive(n) {
   return n * factorialRecrusive(n - 1)
 };
 
-console.log(factorialRecrusive(4000))
-
 
 module.exports = {
   factorialIteration,
