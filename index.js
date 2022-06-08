@@ -1,20 +1,23 @@
-function factorialIteration(n) {
+function factorialIteration(num) {
   let res = 1;
-  if (n > 0) {
-    for (let i = 1; i <= n; i++) {
-      res *= i
-    }
+  if (num > 0) {
+    for (let i = 1; i <= num; i++)
+      res = res * i
   }
-  return res
+  return res;
 };
 
-function factorialRecrusive(n) {
-  if (n < 1) {
-    return 1;
+
+function factorialRecrusive(num) {
+  let res;
+  if (num <= 0) {
+    return 1
   }
-  return n * factorialRecrusive(n - 1)
+  res = num * factorialRecrusive(num - 1)
+  return res;
 };
 
+factorialRecrusive(6)
 
 module.exports = {
   factorialIteration,
